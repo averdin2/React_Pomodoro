@@ -1,10 +1,11 @@
 import React from 'react';
 import './App.css';
+import Background from './components/Background';
 
 function App() {
   return (
     <div className="App">
-      <h1>Hello World</h1>
+      <Background />
     </div>
   );
 }
