@@ -1,0 +1,35 @@
+/* Using Flex */
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* Using Margin */
+/* .container {
+  margin: auto;
+  padding-top: 40vh;
+  width: 50%;
+  text-align: center;
+} */
+
+/* Using Position and Translate */
+/* .container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+} */
+
+/* Using Grid */
+/* .container {
+  display: grid;
+  justify-content: center;
+  justify-items: center;
+  align-content: center;
+  height: 100vh;
+} */
