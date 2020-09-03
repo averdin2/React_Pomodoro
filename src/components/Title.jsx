@@ -1,8 +1,10 @@
 import React from 'react';
 
+import '../styles/colorStyles.css';
+
 function Title(props) {
   return (
-    <div>
+    <div className={props.class}>
       <h1>{props.title}</h1>
     </div>
   );

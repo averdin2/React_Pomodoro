@@ -1,0 +1,28 @@
+/* Color style classes */
+
+/* BLUE */
+.blue-bg {
+  background-color: lightblue;
+}
+
+.blue {
+  color: dodgerblue;
+}
+
+/* GREEN */
+.green-bg {
+  background-color: palegreen;
+}
+
+.green {
+  color: mediumseagreen;
+}
+
+/* RED */
+.red-bg {
+  background-color: lightsalmon;
+}
+
+.red {
+  color: indianred;
+}
