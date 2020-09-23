@@ -17,21 +17,25 @@ export default function Background() {
   // Function to change state variables based on status of timer
   let handleTimerStatus = (status) => {
     switch (status) {
+      // Reset / Not Started
       case 0:
         setStarted(false);
         setBreak(false);
         setStopped(false);
         break;
+      // Timer Started
       case 1:
         setStarted(true);
         setBreak(false);
         setStopped(false);
         break;
+      // Break Timer Started
       case 2:
         setStarted(false);
         setBreak(true);
         setStopped(false);
         break;
+      // Timer Stopped
       case 3:
         setStarted(false);
         setBreak(false);
