@@ -3,11 +3,11 @@ import React, { useState, useEffect } from 'react';
 import '../styles/colorStyles.css';
 
 function PomodoroTimer(props) {
-  // State variables for minutes and seconds
+  // Variables used to display minutes and seconds
   const [displayMinutes, setMinutes] = useState(0);
   const [displaySeconds, setSeconds] = useState(0);
 
-  const [start, setStart] = useState(true);
+  const [reset, setReset] = useState(false);
 
   // Method that computes given time value from minutes to seconds
   let timeInSeconds = (time) => {
@@ -15,9 +15,9 @@ function PomodoroTimer(props) {
   };
 
   // Method to calculate minutes and seconds for a passed time and set state values for timer
-  let displayTime = (t) => {
-    const minutes = Math.floor(t / 60);
-    const seconds = t % 60;
+  let displayTime = (time) => {
+    const minutes = Math.floor(time / 60);
+    const seconds = time % 60;
 
     setMinutes(minutes < 10 ? '0' + minutes : minutes);
     setSeconds(seconds < 10 ? '0' + seconds : seconds);
@@ -25,7 +25,8 @@ function PomodoroTimer(props) {
 
   useEffect(() => {
     // Initialize starting display time
-    displayTime(timeInSeconds(25)); // 25 should be time value passed in through props
+    displayTime(timeInSeconds(props.time)); // Needed so that time doesn't just start without knowing how much time was set
+
     // Method that counts down based on a given time passed in
     let timer = (time) => {
       let timeLeft = timeInSeconds(time);
@@ -33,8 +34,14 @@ function PomodoroTimer(props) {
       const interval = setInterval(() => {
         timeLeft = timeLeft - 1;
 
+        if (reset === true) {
+          console.log('Hello');
+          clearInterval(interval);
+          return;
+        }
+
         if (timeLeft < 0) {
-          setStart(false);
+          props.handleTimerStatus(3);
           clearInterval(interval);
           return;
         }
@@ -42,11 +49,18 @@ function PomodoroTimer(props) {
         displayTime(timeLeft);
       }, 1000);
     };
-    if (start === true) {
-      timer(1);
-      setStart(false);
+
+    if (props.isReset === true) {
+      setReset(true);
     }
-  }, [start]);
+
+    // Starts timer when start is true.
+    // Handle start then toggles start to false to avoid creating a new timer
+    if (props.start === true) {
+      timer(props.time);
+      props.handleStart();
+    }
+  }, [props, reset]);
 
   return (
     <div className={props.class}>
