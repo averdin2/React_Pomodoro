@@ -7,26 +7,23 @@ import '../styles/styles.css';
 import '../styles/colorStyles.css';
 
 export default function Background() {
-  // const [status, setStatus] = useState(0);
-
   // State variables to determine color styles
   const [isStarted, setStarted] = useState(false);
   const [isBreak, setBreak] = useState(false);
   const [isStopped, setStopped] = useState(false);
-  const [isReset, setReset] = useState(false);
 
-  const [shouldStart, setShouldStart] = useState(false);
-
-  // Value variable to be passed to Button as props
+  // Value to determine timer status and used by handleTimerStatus method
   const [statusValue, setStatusValue] = useState(1);
-  const [buttonText, setButtonText] = useState('Start');
+
+  // Variable to determine when timer should start work timer or break timer
+  const [shouldStart, setShouldStart] = useState(false);
 
   // To be passed down to PomodoroTimer
   const [timerStart, setTimerStart] = useState(false);
+  const [time, setTime] = useState(1500);
 
-  let handleStart = () => {
-    setTimerStart(false);
-  };
+  // Text to be passed to button for button text as props
+  const [buttonText, setButtonText] = useState('Start');
 
   // Function to change state variables based on status of timer
   let handleTimerStatus = (status) => {
@@ -36,9 +33,10 @@ export default function Background() {
         setStarted(false);
         setBreak(false);
         setStopped(false);
-        setReset(true);
         setStatusValue(1);
         setShouldStart(false);
+        setTimerStart(false);
+        setTime(1500);
         setButtonText('Start');
         break;
       // Timer Started
@@ -46,9 +44,10 @@ export default function Background() {
         setStarted(true);
         setBreak(false);
         setStopped(false);
-        setReset(false);
         setStatusValue(0);
+        setShouldStart(false);
         setTimerStart(true);
+        setTime(1500);
         setButtonText('Reset');
         break;
       // Break Timer Started
@@ -56,24 +55,23 @@ export default function Background() {
         setStarted(false);
         setBreak(true);
         setStopped(false);
-        setReset(false);
         setStatusValue(0);
+        setShouldStart(true);
         setTimerStart(true);
+        setTime(300);
         setButtonText('Reset');
-
         break;
       // Timer Stopped
       case 3:
         setStarted(false);
         setBreak(false);
         setStopped(true);
+        setTime(0);
         if (shouldStart === true) {
           setStatusValue(1);
-          setShouldStart(!shouldStart);
           setButtonText('Start');
         } else {
           setStatusValue(2);
-          setShouldStart(!shouldStart);
           setButtonText('Break');
         }
         break;
@@ -81,11 +79,6 @@ export default function Background() {
         break;
     }
   };
-
-  // let changeTimerStatus = (value) => {
-  //   setStatus(value);
-  //   handleTimerStatus(value);
-  // };
 
   return (
     <div
@@ -106,11 +99,10 @@ export default function Background() {
         ${isStarted ? 'blue' : ''}
         ${isBreak ? 'green' : ''}
         ${isStopped ? 'red' : ''}`}
-        time={0.1}
+        // Time given in seconds
+        time={time}
         start={timerStart}
-        handleStart={handleStart}
         handleTimerStatus={handleTimerStatus}
-        isReset={isReset}
       />
       <Button
         class={`
