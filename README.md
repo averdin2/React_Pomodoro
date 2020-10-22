@@ -1,4 +1,4 @@
-# React Pomodoro Tutorial
+# React Pomodoro
 
 ## Description
 
@@ -6,7 +6,9 @@ A simple web app pomodoro timer made using React.
 
 ## Purpose
 
-The purpose of this project is for me to create an introductory React Tutorial by building a simple project alongside explaining React concepts. This tutorial is in its early stages of development, so it has yet to be released.
+The purpose of this project is for me to recreate a project that I have made from another framework. I want to be able to understand different ways to implement code, as well as exercise good coding practices.
+
+This project was also a way for me to put my coding thought process into words with the hopes of sharing with others. See the journals folder of this repository to find my thoughts on building this project.
 
 ## Project Functional Requirements per Component:
 
