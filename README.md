@@ -10,7 +10,13 @@ The purpose of this project is for me to recreate a project that I have made fro
 
 This project was also a way for me to put my coding thought process into words with the hopes of sharing with others. See the journals folder of this repository to find my thoughts on building this project.
 
+## Links
+
 Live code here: https://averdin2.github.io/React_Pomodoro/
+
+Here is a link to the code of the Vue version of this project: https://github.com/averdin2/pomodoro_web_app
+
+I also posted notes on my thought process as I build that project for the first time so feel free to check out the project blog folder from that repository.
 
 ## Project Functional Requirements per Component:
 
