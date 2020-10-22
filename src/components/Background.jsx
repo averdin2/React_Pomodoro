@@ -16,10 +16,10 @@ export default function Background() {
   const [statusValue, setStatusValue] = useState(1);
 
   // Variable to determine when timer should start work timer or break timer
-  const [shouldStart, setShouldStart] = useState(false);
+  const [repeatTimer, setRepeatTimer] = useState(false);
 
   // To be passed down to PomodoroTimer
-  const [timerStart, setTimerStart] = useState(false);
+  const [timerActive, setTimerActive] = useState(false);
   const [time, setTime] = useState(1500);
 
   // Text to be passed to button for button text as props
@@ -34,8 +34,8 @@ export default function Background() {
         setBreak(false);
         setStopped(false);
         setStatusValue(1);
-        setShouldStart(false);
-        setTimerStart(false);
+        setRepeatTimer(false);
+        setTimerActive(false);
         setTime(1500);
         setButtonText('Start');
         break;
@@ -45,8 +45,8 @@ export default function Background() {
         setBreak(false);
         setStopped(false);
         setStatusValue(0);
-        setShouldStart(false);
-        setTimerStart(true);
+        setRepeatTimer(false);
+        setTimerActive(true);
         setTime(1500);
         setButtonText('Reset');
         break;
@@ -56,8 +56,8 @@ export default function Background() {
         setBreak(true);
         setStopped(false);
         setStatusValue(0);
-        setShouldStart(true);
-        setTimerStart(true);
+        setRepeatTimer(true);
+        setTimerActive(true);
         setTime(300);
         setButtonText('Reset');
         break;
@@ -67,7 +67,8 @@ export default function Background() {
         setBreak(false);
         setStopped(true);
         setTime(0);
-        if (shouldStart === true) {
+        setTimerActive(false);
+        if (repeatTimer === true) {
           setStatusValue(1);
           setButtonText('Start');
         } else {
@@ -101,7 +102,7 @@ export default function Background() {
         ${isStopped ? 'red' : ''}`}
         // Time given in seconds
         time={time}
-        start={timerStart}
+        start={timerActive}
         handleTimerStatus={handleTimerStatus}
       />
       <Button

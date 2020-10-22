@@ -36,7 +36,7 @@ function PomodoroTimer(props) {
         if (time <= 0) {
           clearInterval(interval);
           // To make sure timer doesn't count negative
-          displayTime(0);
+          //displayTime(0);
           props.handleTimerStatus(3);
         }
       }, 1000);
