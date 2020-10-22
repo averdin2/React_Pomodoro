@@ -10,6 +10,8 @@ The purpose of this project is for me to recreate a project that I have made fro
 
 This project was also a way for me to put my coding thought process into words with the hopes of sharing with others. See the journals folder of this repository to find my thoughts on building this project.
 
+Live code here: https://averdin2.github.io/React_Pomodoro/
+
 ## Project Functional Requirements per Component:
 
 ### Pomodoro Timer Component:
